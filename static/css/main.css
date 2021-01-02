@@ -12,11 +12,25 @@ h1,h2,h3,h4,h5,h6{
 	color:hsl(39, 100%, 50%);
 }
 
+p{
+  color: hsl(0, 0%, 80%);
+}
+
+.box-info{
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+	background-color: rgba(0, 0, 0, 0.63);
+	border-radius: 4px;
+  padding: 10px;
+  height: auto;
+  text-align:auto;
+}
+
 .box-element{
 	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
-	background-color: rgb(255, 174, 0);
+	background-color: rgba(0, 0, 0, 0.363);
 	border-radius: 4px;
-	padding: 10px;
+  padding: 10px;
+  text-align:center;
 }
 
 
