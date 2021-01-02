@@ -1,0 +1,65 @@
+<!doctype html>
+{% load static %}
+<html lang="en" dir="ltr"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <title>News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+
+<!-- Optional theme -->
+  </head> 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Stock Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+           
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'news' %}">News</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_stock' %}">Monitor Stocks</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'delete_stock' %}">Delete Stocks</a>
+              </li>
+            
+          </ul>
+          
+        </div>
+      </nav>
+  <body> 
+    <div class="box-element"> 
+  
+      <h1 style ="color:rgb(0, 0, 0)"> 
+        Get the latest financial news on our website 
+      </h1> 
+      
+    </div> 
+    <br>
+    <br>
+  
+    <div class="container"> 
+      {% for new, des, i in mylist %}
+            <div class="news-content">
+              <img src="{{ i }}" alt=""> 
+              <h1>News:</h1> {{ new }} 
+              {{ value|linebreaks }} 
+  
+              <h4>Description:</h4>{{ des }} 
+              {{ value|linebreaks }} 
+            </div>
+            <br>
+            <br>
+      {% endfor %} 
+    </div> 
+  
+  </body> 
+</html> 

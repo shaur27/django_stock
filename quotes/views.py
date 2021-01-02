@@ -12,7 +12,6 @@ def home(request):
 
         api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ ticker +"/quote?token=pk_7fdecfad74654dcc97b287d24edbf068")
 
-
         try:
             api= json.loads(api_request.content)
         except Exception as e:
@@ -20,10 +19,33 @@ def home(request):
         return render(request, 'home.html', {'api': api})
 
     else:
-        return render(request, 'home.html', {'ticker': "Enter ticker symbol!"})
+        return render(request, 'home.html')
     #pk_7fdecfad74654dcc97b287d24edbf068
 
-    
+#news api 5ace4197601b4040a907e288f079f9d2
+
+from django.shortcuts import render 
+from newsapi.newsapi_client import NewsApiClient
+  
+# Create your views here.  
+def news(request): 
+      
+    newsapi = NewsApiClient(api_key ='5ace4197601b4040a907e288f079f9d2') 
+    #top = newsapi.get_top_headlines(sources ='techcrunch') 
+    top = newsapi.get_top_headlines(sources='business-insider')
+    l = top['articles'] 
+    desc =[] 
+    news =[] 
+    img =[] 
+  
+    for i in range(len(l)): 
+        f = l[i] 
+        news.append(f['title']) 
+        desc.append(f['description']) 
+        img.append(f['urlToImage']) 
+    mylist = zip(news, desc, img) 
+  
+    return render(request, 'news.html', context ={"mylist":mylist})    
 
 def about(request):
     return render(request, 'about.html', {})
